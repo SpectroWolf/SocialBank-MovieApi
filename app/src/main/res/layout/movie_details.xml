@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,7 +9,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/white_grey">
+
+        <include layout = "@layout/toolbar"/>
 
         <ProgressBar
             android:id="@+id/progress_bar"
@@ -19,24 +21,16 @@
             android:layout_gravity="center"
             android:visibility="gone"/>
 
-        <TextView
-            android:id="@+id/txt_error"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Connection Problem!!"
-            android:visibility="gone"/>
-
-        <ScrollView
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:id="@+id/linearLayout">
+                android:orientation="vertical">
 
 
                 <ImageView
@@ -44,29 +38,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
                     android:layout_gravity="center"
-                    android:scaleType="matrix" />
+                    android:scaleType="matrix"
+                    android:src="@drawable/poster_movie_default" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_margin="8dp">
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tv_movie_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="movie"
+                        android:textSize="18sp"
                         android:textStyle="bold"
-                        android:textSize="18sp"/>
+                        android:textColor="@color/text"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/movie_info"
                         android:layout_marginTop="15dp"
+                        android:text="@string/movie_info"
                         android:textSize="14sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textColor="@color/text"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -79,7 +76,8 @@
                             android:layout_marginTop="2dp"
                             android:text="Type: "
                             android:textSize="12sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold"
+                            android:textColor="@color/text"/>
 
                         <TextView
                             android:id="@+id/tv_movie_type"
@@ -87,7 +85,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:text="Movie"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp"
+                            android:textColor="@color/text"/>
 
                     </LinearLayout>
 
@@ -102,7 +101,8 @@
                             android:layout_marginTop="2dp"
                             android:text="Genre: "
                             android:textSize="12sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold"
+                            android:textColor="@color/text"/>
 
                         <TextView
                             android:id="@+id/tv_movie_genre"
@@ -110,7 +110,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:text="Action, Drama"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp"
+                            android:textColor="@color/text"/>
 
                     </LinearLayout>
 
@@ -125,7 +126,8 @@
                             android:layout_marginTop="2dp"
                             android:text="Year: "
                             android:textSize="12sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold"
+                            android:textColor="@color/text"/>
 
                         <TextView
                             android:id="@+id/tv_movie_year"
@@ -133,7 +135,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:text="2019"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp"
+                            android:textColor="@color/text"/>
 
                     </LinearLayout>
 
@@ -148,7 +151,8 @@
                             android:layout_marginTop="2dp"
                             android:text="Released: "
                             android:textSize="12sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold"
+                            android:textColor="@color/text"/>
 
                         <TextView
                             android:id="@+id/tv_movie_released"
@@ -156,7 +160,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:text="25 May 1977"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp"
+                            android:textColor="@color/text"/>
 
                     </LinearLayout>
 
@@ -171,7 +176,8 @@
                             android:layout_marginTop="2dp"
                             android:text="imdbRating: "
                             android:textSize="12sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold"
+                            android:textColor="@color/text"/>
 
                         <TextView
                             android:id="@+id/tv_movie_imdbrating"
@@ -179,7 +185,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:text="8.6"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp"
+                            android:textColor="@color/text"/>
 
                     </LinearLayout>
 
@@ -189,14 +196,17 @@
                         android:layout_marginTop="2dp"
                         android:text="@string/overview"
                         android:textSize="12sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textColor="@color/text"/>
+
                     <TextView
                         android:id="@+id/tv_movie_plot"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:text="overview ........."
-                        android:textSize="12sp"/>
+                        android:textSize="12sp"
+                        android:textColor="@color/text"/>
 
                 </LinearLayout>
             </LinearLayout>

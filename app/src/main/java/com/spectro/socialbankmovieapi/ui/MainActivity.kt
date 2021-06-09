@@ -1,13 +1,14 @@
 package com.spectro.socialbankmovieapi.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.spectro.socialbankmovieapi.R
 import com.spectro.socialbankmovieapi.model.Movie
 import com.spectro.socialbankmovieapi.repository.Repository
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView(){
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = GridLayoutManager(this,2)
         recyclerViewAdapter = RecyclerViewAdapter(this)
         recyclerView.adapter = recyclerViewAdapter
     }
@@ -38,19 +39,19 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
         btn_search.setOnClickListener{
+            txt_empty.visibility = View.GONE
             val search = et_search.text.toString()
             viewModel.getMovie(search)
-
+            progress_bar_main.visibility = View.VISIBLE
             viewModel.myResponse.observe(this, Observer{response ->
                 if(response.isSuccessful && response.body()?.Response != false){
                     recyclerViewAdapter.setMovieList(response.body()?.Search as ArrayList<Movie>)
                     recyclerViewAdapter.notifyDataSetChanged()
+                    progress_bar_main.visibility = View.GONE
                 } else {
-                    Toast.makeText(this@MainActivity, "Erro ao buscar filme.", Toast.LENGTH_SHORT).show()
+                    progress_bar_main.visibility = View.GONE
+                    Toast.makeText(this@MainActivity, "Filme não encontrado!", Toast.LENGTH_SHORT).show()
                 }
-            })
-            viewModel.myResponse.observe(this, Observer { response ->
-                Log.d("Response", response.body()?.Search.toString())
             })
         }
     }

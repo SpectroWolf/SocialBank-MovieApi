@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.spectro.socialbankmovieapi.R
 import com.spectro.socialbankmovieapi.model.Movie
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
 class RecyclerViewAdapter(private val context: Context): RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
@@ -30,9 +31,11 @@ class RecyclerViewAdapter(private val context: Context): RecyclerView.Adapter<Re
             tvTitle.text = data.Title
             tvYear.text = data.Year
 
+
             Glide.with(ivPoster)
                 .load(data.Poster)
                 .apply(RequestOptions.centerCropTransform())
+                .error(R.drawable.poster_list_default)
                 .into(ivPoster)
 
             itemView.setOnClickListener {

@@ -1,14 +1,18 @@
 package com.spectro.socialbankmovieapi.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.spectro.socialbankmovieapi.R
 import com.spectro.socialbankmovieapi.model.MovieDetail
 import com.spectro.socialbankmovieapi.repository.Repository
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.movie_details.*
+import kotlinx.android.synthetic.main.toolbar.*
 import retrofit2.Response
 
 class MovieDetails : AppCompatActivity() {
@@ -26,10 +30,11 @@ class MovieDetails : AppCompatActivity() {
 
         if (id != null) {
             viewModel.getMovieDetails(id)
+            progress_bar.visibility = View.VISIBLE
         }
         viewModel.myResponse2.observe(this, {
             bindMovieDetails(it)
-
+            progress_bar.visibility = View.GONE
         })
     }
 
@@ -46,6 +51,9 @@ class MovieDetails : AppCompatActivity() {
         Glide.with(iv_movie_poster)
             .load(movie.body()?.Poster)
             .apply(RequestOptions.centerCropTransform())
+            .error(R.drawable.poster_movie_default)
             .into(iv_movie_poster)
     }
+
+
 }
