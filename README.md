@@ -1,3 +1,3 @@
-# SocialBank-MovieApi
+# Social Movie
 
-Projeto de APP que consome a API http://www.omdbapi.com para buscar filmes.
+Social Movie é um APP (Projeto) que consome a API do https://www.imdb.com para pesquisar filmes e mostrar os detalhes dos mesmos.
