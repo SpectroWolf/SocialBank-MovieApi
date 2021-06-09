@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Social Bank Movie API</string>
+    <string name="movie_info">Movie Info</string>
+    <string name="overview">Overview</string>
+</resources>
